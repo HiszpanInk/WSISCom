@@ -16,9 +16,10 @@ class UserSeeder extends Seeder
     {
         //
         $newUser = new User();
+        $newUser->id = \Ramsey\Uuid\Uuid::uuid4()->toString();
         $newUser->username = "AdamNowak007";
         $newUser->name = "Adam";
-        $newUser->surname = "Adam";
+        $newUser->surname = "Nowak";
         $newUser->password = Hash::make("loremipsum123");
         $newUser->save();
     }

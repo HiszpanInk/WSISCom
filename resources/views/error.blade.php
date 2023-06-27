@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Error!</h1>
-    {{ error_content }}
+    {{ $error_content }}
     <footer>By HiszpanInk for WSIS</footer>
 </body>
 </html>

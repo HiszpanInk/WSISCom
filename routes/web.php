@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Middleware\EnsureLogin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +16,18 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
     return view('index');
-});
+})->name('index');
 
-Route::post('login', [LoginController::class, 'handleLoginAttemp']);
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome')->middleware(EnsureLogin::class);
+
+
+
+Route::get('login', function () {
+    return view('login');
+})->name('loginPage');
+
+Route::post('login', [LoginController::class, 'handleLoginAttemp'])->name('loginAction');
+Route::post('logout', [LoginController::class, 'handleLogoutAttemp'])->name('logoutAction');
